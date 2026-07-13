@@ -1,111 +1,116 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
+  /* Colors */
+  --bg: #0b0c10;
+  --panel-bg: rgba(22, 24, 33, 0.7);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text: #c5c6c7;
+  --text-h: #ffffff;
+  --text-muted: #8b8e99;
+  
+  /* Player Colors */
+  --color-x: #00f0ff;
+  --color-x-glow: rgba(0, 240, 255, 0.4);
+  --color-x-bg: rgba(0, 240, 255, 0.08);
+  
+  --color-o: #ff007f;
+  --color-o-glow: rgba(255, 0, 127, 0.4);
+  --color-o-bg: rgba(255, 0, 127, 0.08);
+
   --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --accent-glow: rgba(170, 59, 255, 0.4);
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Fonts */
+  --sans: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  font: 16px/145% var(--sans);
+  letter-spacing: 0.2px;
+  color-scheme: dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
+}
+
+/* Light Theme Variables */
+:root[data-theme="light"] {
+  --bg: #f5f6fa;
+  --panel-bg: rgba(255, 255, 255, 0.8);
+  --panel-border: rgba(0, 0, 0, 0.06);
+  --text: #4a4d55;
+  --text-h: #1e2022;
+  --text-muted: #7d828c;
+  
+  --color-x: #008fa0;
+  --color-x-glow: rgba(0, 143, 160, 0.3);
+  --color-x-bg: rgba(0, 143, 160, 0.06);
+  
+  --color-o: #c2005f;
+  --color-o-glow: rgba(194, 0, 95, 0.3);
+  --color-o-bg: rgba(194, 0, 95, 0.06);
+
+  --accent: #7a1fcc;
+  --accent-glow: rgba(122, 31, 204, 0.3);
+  --border: rgba(0, 0, 0, 0.08);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  color-scheme: light;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, var(--panel-border) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(170, 59, 255, 0.05) 0%, transparent 45%);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sans);
+  font-weight: 700;
   color: var(--text-h);
+  margin: 0;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+button {
+  font-family: var(--sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
 }
 
 code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  font-family: var(--mono);
+  font-size: 0.9em;
 }
