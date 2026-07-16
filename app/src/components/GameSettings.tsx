@@ -9,6 +9,7 @@ interface GameSettingsProps {
   onSelectDifficulty: (diff: 'easy' | 'medium' | 'impossible') => void;
   onRestartGame: () => void;
   onResetStats: () => void;
+  onClose?: () => void;
 }
 
 export const GameSettings: React.FC<GameSettingsProps> = ({

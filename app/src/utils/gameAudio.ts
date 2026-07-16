@@ -77,15 +77,16 @@ export class GameAudio {
     if (!this.ctx) return;
 
     // Arpeggiated C-Major rising chord
-    const now = this.ctx.currentTime;
+    const ctx = this.ctx; // capture for TS narrowing inside forEach
+    const now = ctx.currentTime;
     const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
     
     notes.forEach((freq, index) => {
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
       
       osc.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(ctx.destination);
       
       osc.type = 'sine';
       osc.frequency.setValueAtTime(freq, now + index * 0.08);
